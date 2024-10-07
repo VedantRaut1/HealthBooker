@@ -70,7 +70,7 @@ const AdminAppointments = () => {
                 <thead>
                   <tr>
                     <th>S.No</th>
-                    <th>Doctor</th>
+                    <th>Therapist</th>
                     <th>Patient</th>
                     <th>Appointment Date</th>
                     <th>Appointment Time</th>

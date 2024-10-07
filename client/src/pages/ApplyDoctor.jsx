@@ -40,9 +40,9 @@ const ApplyDoctor = () => {
           }
         ),
         {
-          success: "Doctor application sent successfully",
-          error: "Unable to send Doctor application",
-          loading: "Sending doctor application...",
+          success: "Therapist application sent successfully",
+          error: "Unable to send Therapist application",
+          loading: "Sending Therapist application...",
         }
       );
 
@@ -82,7 +82,7 @@ const ApplyDoctor = () => {
               type="number"
               name="fees"
               className="form-input"
-              placeholder="Enter your fees  (in dollars)"
+              placeholder="Enter your fees  (in ₹)"
               value={formDetails.fees}
               onChange={inputChange}
             />

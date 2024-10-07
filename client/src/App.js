@@ -6,11 +6,12 @@ import { Toaster } from "react-hot-toast";
 import { Protected, Public, Admin } from "./middleware/route";
 import React, { lazy, Suspense } from "react";
 import Loading from "./components/Loading";
+import Therapists from "./pages/Therapists";
 
 const Home = lazy(() => import("./pages/Home"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Appointments = lazy(() => import("./pages/Appointments"));
-const Doctors = lazy(() => import("./pages/Doctors"));
+const Doctors = lazy(() => import("./pages/Therapists"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Notifications = lazy(() => import("./pages/Notifications"));
 const ApplyDoctor = lazy(() => import("./pages/ApplyDoctor"));
@@ -39,8 +40,8 @@ function App() {
             element={<Home />}
           />
           <Route
-            path="/doctors"
-            element={<Doctors />}
+            path="/therapist"
+            element={<Therapists/>}
           />
           <Route
             path="/appointments"

@@ -39,9 +39,9 @@ const AdminDoctors = () => {
             }
           ),
           {
-            success: "Doctor deleted successfully",
-            error: "Unable to delete Doctor",
-            loading: "Deleting Doctor...",
+            success: "Therapist deleted successfully",
+            error: "Unable to delete Therapist",
+            loading: "Deleting Therapist...",
           }
         );
         getAllDoctors();
@@ -61,7 +61,7 @@ const AdminDoctors = () => {
         <Loading />
       ) : (
         <section className="user-section">
-          <h3 className="home-sub-heading">All Doctors</h3>
+          <h3 className="home-sub-heading">All Therapists</h3>
           {doctors.length > 0 ? (
             <div className="user-container">
               <table>

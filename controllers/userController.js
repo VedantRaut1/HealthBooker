@@ -3,6 +3,37 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Doctor = require("../models/doctorModel");
 const Appointment = require("../models/appointmentModel");
+const nodemailer = require("nodemailer");
+
+// Configure Nodemailer transport
+const transporter = nodemailer.createTransport({
+    service: 'Gmail', // You can use other services like Yahoo, Outlook, etc.
+    auth: {
+        user: 'your_email@gmail.com', // Your email
+        pass: 'your_email_password', // Your email password or app-specific password
+    },
+    secure: false, // Use TLS
+    tls: {
+        rejectUnauthorized: false, // Accept self-signed certificates (if needed)
+    }
+});
+
+// Email sending function
+const sendEmail = async (to, doctor, date, time) => {
+    const mailOptions = {
+        from: 'your_email@gmail.com',
+        to: to,
+        subject: 'Appointment Confirmation',
+        text: `You have booked an appointment with Dr. ${doctor} on ${date} at ${time}.`,
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        console.log('Email sent successfully');
+    } catch (error) {
+        console.error('Error sending email:', error);
+    }
+};
 
 const getuser = async (req, res) => {
   try {
@@ -62,6 +93,10 @@ const register = async (req, res) => {
     if (!result) {
       return res.status(500).send("Unable to register user");
     }
+    
+    // Send email after successful registration
+    sendEmail(user.email, 'Dr. Smith', '2024-10-07', '10:00 AM'); // Example values for doctor, date, and time
+    
     return res.status(201).send("User registered successfully");
   } catch (error) {
     res.status(500).send("Unable to register user");
@@ -98,6 +133,17 @@ const deleteuser = async (req, res) => {
     res.status(500).send("Unable to delete user");
   }
 };
+const getUserEmail = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("email"); // assuming req.user.id is set by your auth middleware
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    return res.send({ email: user.email });
+  } catch (error) {
+    res.status(500).send("Unable to get user email");
+  }
+};
 
 module.exports = {
   getuser,
@@ -106,4 +152,6 @@ module.exports = {
   register,
   updateprofile,
   deleteuser,
+  getUserEmail, // Add this line to export the new function
 };
+

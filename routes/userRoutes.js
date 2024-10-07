@@ -5,6 +5,8 @@ const userRouter = express.Router();
 
 userRouter.get("/getuser/:id", auth, userController.getuser);
 
+userRouter.get("/getUserEmail", auth, userController.getUserEmail);
+
 userRouter.get("/getallusers", auth, userController.getallusers);
 
 userRouter.post("/login", userController.login);

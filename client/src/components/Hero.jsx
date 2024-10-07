@@ -7,7 +7,7 @@ const Hero = () => {
     <section className="hero">
       <div className="hero-content">
         <h1>
-          Your Health, <br />
+          Your Mental Health, <br />
           Our Responsibility
         </h1>
         <p>
