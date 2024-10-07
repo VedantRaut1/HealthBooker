@@ -1,0 +1,12 @@
+therapy
+	
+		-PORT=5000
+MONGO_URI=mongodb+srv://vedant:vedant@argi-app.zmbnl.mongodb.net/?retryWrites=true&w=majority&appName=argi-app
+JWT_SECRET=mysecretkey
+
+-client 
+ -REACT_APP_SERVER_DOMAIN=http://localhost:5000/api
+REACT_APP_CLOUDINARY_BASE_URL=https://api.cloudinary.com/v1_1/dsiiaif0v/image/upload
+REACT_APP_CLOUDINARY_CLOUD_NAME=dsiiaif0v
+REACT_APP_CLOUDINARY_PRESET=fuj8v23h
+REACT_FORMIK_SECRET=https://formspree.io/f/xdkonwoe
